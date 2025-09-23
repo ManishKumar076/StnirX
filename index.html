@@ -1,176 +1,239 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>StnirX · Ideas that work for business seekers</title>
-  <meta name="description" content="StnirX helps business seekers choose AI-proof, future-proof business ideas and turn them into action." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0b0b10; --panel: #12121a; --soft: #1b1b26; --text: #e9e9ef; --muted: #b5b5c7;
-      --brand: #7c5cff; --brand-2: #21d4fd; --ok: #37d67a; --warn: #ffb020;
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, sans-serif; background: radial-gradient(1200px 800px at 10% -10%, rgba(124,92,255,.15), transparent 60%), radial-gradient(900px 700px at 110% 10%, rgba(33,212,253,.12), transparent 50%), var(--bg); color: var(--text); line-height: 1.6; }
-    a { color: inherit; text-decoration: none; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
-    .nav { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
-    .nav .brand { font-weight: 800; letter-spacing: .3px; }
-    .nav a.cta { padding: 10px 16px; border-radius: 12px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); font-weight: 700; border: 0; color: #0a0a0f; box-shadow: 0 10px 24px rgba(124,92,255,.35); transition: 0.25s; }
-    .nav a.cta:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(124,92,255,0.4); }
-    .pill { display: inline-flex; gap: 8px; align-items: center; padding: 10px 14px; border-radius: 12px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); transition: 0.25s; }
-    .pill:hover { background: rgba(255,255,255,.08); }
-    .hero { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; padding: 32px 0; }
-    .hero h1 { font-size: clamp(32px,5vw,54px); line-height: 1.05; margin: .2em 0 .4em; }
-    .muted { color: var(--muted); }
-    .hero p { font-size: 18px; color: var(--muted); }
-    .card { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.08); backdrop-filter: blur(6px); border-radius: 18px; padding: 18px; transition: 0.25s; }
-    .card:hover { border-color: rgba(255,255,255,.15); transform: translateY(-2px); }
-    .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 18px; }
-    .stat { padding: 14px 16px; border-radius: 14px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); }
-    .stat b { display: block; font-size: 22px; }
-    .section { padding: 56px 0; }
-    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
-    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 14px; background: #fff; color: #0a0a10; font-weight: 800; border: 0; transition: 0.25s; }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(124,92,255,0.4); }
-    .btn.secondary { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,.14); }
-    .how { counter-reset: step; }
-    .how .step { position: relative; padding: 18px; border-radius: 16px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); }
-    .how .step:before { counter-increment: step; content: counter(step); position: absolute; top: -10px; left: -10px; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #0b0b10; font-weight: 900; box-shadow: 0 10px 24px rgba(124,92,255,.35); }
-    .quote { font-size: 18px; border-left: 4px solid var(--brand); padding-left: 16px; margin: 0; }
-    .cta-box { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 20px; border-radius: 18px; background: linear-gradient(180deg, rgba(124,92,255,.08), rgba(33,212,253,.08)); border: 1px solid rgba(255,255,255,.12); }
-    .plans { display: flex; gap: 14px; align-items: flex-start; }
-    .plan { flex: 1; border-radius: 14px; padding: 18px; background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06); }
-    .plan h4 { margin: 0 0 8px; }
-    .plan small { color: var(--muted); }
-    .footer { padding: 36px 0; color: var(--muted); font-size: 14px; border-top: 1px solid rgba(255,255,255,.06); }
-    input, textarea { padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.05); color:#fff; }
-    form { display:grid; gap:14px; max-width:500px; }
-    @media (max-width:900px) { .grid-3, .grid-2 { grid-template-columns: 1fr; } .cta-box, .plans { flex-direction: column; align-items: stretch; } }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StnirX</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <style>
+    /* Brand Colors for Social and Message Icons */
+    .fa-linkedin { color: #0A66C2 !important; }
+    .fa-instagram { color: #E1306C !important; }
+    .fa-envelope { color: #EA4335 !important; }
+    .email-info-box { background: #e3f0fa !important; color: #0A2540; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+    body.dark-mode .email-info-box { background: #22303c !important; color: #e0e0e0; }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; transition: background 0.3s, color 0.3s; }
+
+        header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 999; transition: background 0.3s; }
+        header img.stnirx-logo {
+            width: 80px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            margin-right: 16px;
+            background: #fff;
+            object-fit: contain;
+            transition: box-shadow 0.3s;
+        }
+        header img.stnirx-logo:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+        }
+        .btn-success, .btn-primary { transition: transform 0.2s, background 0.2s; }
+        .btn-success:hover, .btn-primary:hover { transform: scale(1.05); }
+
+        .hero-section h1 span { color: #0d6efd; }
+        .hero-section ul li { margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .hero-section ul li i { color: #0d6efd; margin-right: 0.5rem; }
+        .hero-section form { background: #f8f9fa; padding: 20px; border-radius: 10px; transition: background 0.3s, color 0.3s; }
+        .hero-section form h3 { margin-bottom: 1rem; }
+        .hero-section form .btn { width: 100%; }
+        .location-img { border-radius: 10px; max-width: 100%; margin-top: 15px; transition: filter 0.3s; }
+
+        .pricing-section { padding: 60px 0; }
+        .pricing-card { border-radius: 10px; transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s; }
+        .pricing-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        .pricing-card h3 { margin-bottom: 1rem; }
+        .pricing-card p.price { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #0d6efd; }
+
+        .counter-section { background: #f1f3f5; transition: background 0.3s, color 0.3s; }
+        .counter-section h2 { font-weight: 700; margin-bottom: 0.5rem; }
+        .counter-section .shadow { transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s; }
+        .counter-section .shadow:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+
+        .contact-section h2 { font-weight: 700; margin-bottom: 1rem; }
+        .contact-section p { font-size: 1rem; color: #555; }
+        .contact-section .shadow { transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s; }
+        .contact-section a { color: #0d6efd; text-decoration: none; }
+        .contact-section a:hover { text-decoration: underline; }
+
+
+        /* Dark Mode Styles */
+        body.dark-mode { background-color: #121212; color: #e0e0e0; }
+        body.dark-mode header { background-color: #1f1f1f; box-shadow: 0 2px 10px rgba(255,255,255,0.1); }
+        body.dark-mode .hero-section form,
+        body.dark-mode .pricing-card,
+        body.dark-mode .counter-section .shadow,
+        body.dark-mode .contact-section .shadow {
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+        }
+        body.dark-mode .contact-section {
+            background-color: #181a1b !important;
+            color: #e0e0e0;
+        }
+        body.dark-mode .contact-section .bg-light {
+            background-color: #23272b !important;
+            color: #e0e0e0;
+        }
+        body.dark-mode .pricing-section {
+            background-color: #181a1b !important;
+            color: #e0e0e0;
+        }
+        body.dark-mode .counter-section {
+            background-color: #181a1b !important;
+            color: #e0e0e0;
+        }
+        body.dark-mode a { color: #90caf9; }
+        body.dark-mode .btn-primary { background-color: #0d6efd; border-color: #0d6efd; color: #fff; }
+        body.dark-mode .btn-success { background-color: #28a745; border-color: #28a745; color: #fff; }
+        body.dark-mode .location-img { filter: brightness(0.8); }
+
+        @media (max-width: 768px) { .hero-section h1 { font-size: 1.8rem; } header .btn { font-size: 0.9rem; padding: 0.25rem 0.5rem; } }
+        @media (max-width: 576px) { .hero-section h1 { font-size: 1.5rem; } .hero-section ul li { font-size: 1rem; } }
+    </style>
 </head>
 <body>
-  <header class="container nav">
-    <div class="brand">StnirX</div>
-    <nav>
-      <a class="pill" href="#how">How it works</a>
-      <a class="pill" href="#services">Services</a>
-      <a class="pill" href="#contact">Contact</a>
-      <a class="cta" href="#start">Get started</a>
-    </nav>
-  </header>
 
-  <main class="container">
-    <section class="hero">
-      <div>
-        <h1>Ideas that actually work for <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">business seekers</span>.</h1>
-        <p>StnirX helps business seekers avoid dead-end markets and pick AI-proof, future-proof ideas. We read trends, analyze risks, and turn it into clear next steps you can execute today.</p>
-        <div style="display:flex;gap:10px;margin:18px 0 6px">
-          <a class="btn" href="#start">Get started</a>
-          <a class="btn secondary" href="#services">See what you get</a>
+<!-- Header -->
+<header class="container-fluid sticky-top py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+    <img src="stnirx.png" alt="StnirX Logo" class="stnirx-logo">
+        <div class="d-flex align-items-center">
+            <button class="btn btn-success me-2"><i class="fab fa-whatsapp"></i> Chat</button>
+            <button class="btn btn-primary me-3"><i class="fas fa-phone"></i> Call</button>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="darkModeToggle">
+                <label class="form-check-label" for="darkModeToggle">Dark Mode</label>
+            </div>
         </div>
-        <div class="stats">
-          <div class="stat"><b>+40</b><span class="muted">growth niches to explore</span></div>
-          <div class="stat"><b>&lt;7 days</b><span class="muted">from idea to action plan</span></div>
-          <div class="stat"><b>0 ₹</b><span class="muted">free plan</span></div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h1>Ideas that actually work for <span>Business Seekers</span></h1>
+                <p>We help business seekers avoid dead-end markets and pick AI-proof, future-proof ideas.</p>
+                <ul class="list-unstyled">
+                    <li><i class="far fa-circle-check"></i> Ideas fitting your budget & skills</li>
+                    <li><i class="far fa-circle-check"></i> Location based business ideas</li>
+                    <li><i class="far fa-circle-check"></i> Launch & marketing plan</li>
+                    <li><i class="far fa-circle-check"></i> Business growth strategies</li>
+                </ul>
+                <img id="locationImage" class="location-img" alt="Location based image">
+            </div>
+            <div class="col-lg-6">
+                <form>
+                    <h3>Submit Your Details</h3>
+                    <div class="mb-3"><label class="form-label">Name</label><input type="text" class="form-control" placeholder="Enter your name" required></div>
+                    <div class="mb-3"><label class="form-label">Phone</label><div class="input-group"><span class="input-group-text">+91</span><input type="text" class="form-control" placeholder="Phone"></div></div>
+                    <div class="mb-3"><label class="form-label">City</label><input type="text" class="form-control" placeholder="City" required></div>
+                    <div class="mb-3"><label class="form-label">Area of Interest</label><input type="text" class="form-control" placeholder="Interest" required></div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
-    <section id="about" class="section">
-      <h2>What is StnirX?</h2>
-      <p class="muted">We’re a research-driven studio turning noisy tech trends into practical opportunities for business seekers. We focus on categories resilient to automation, locally defensible, and fast to start.</p>
-      <blockquote class="quote">“Start small, think sharp, and choose markets where humans win — that’s the StnirX way.”</blockquote>
-    </section>
-
-    <section id="services" class="section">
-      <h2>What you get — free</h2>
-      <div class="grid-3">
-        <div class="card"><h3>Trend scan</h3><p class="muted">Simple briefs showing which markets are heating up (and which to skip) for the next 12–24 months.</p></div>
-        <div class="card"><h3>Risk radar</h3><p class="muted">Automation, capital, and competition scores with a plain-English summary.</p></div>
-        <div class="card"><h3>Action playbook</h3><p class="muted">A 1-page plan: validate, price, launch, and grow with lightweight tools.</p></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Plans</h2>
-      <div class="plans">
-        <div class="plan">
-          <h4>Free plan — Idea only</h4>
-          <small>One-time idea suggestion — perfect for testing our approach.</small>
-          <ul style="margin-top:12px;color:var(--muted)">
-            <li>One tailored idea suggestion based on city & budget</li>
-            <li>Short explanation: why it works & main risks</li>
-            <li>1-page quick validation checklist</li>
-            <li>Email reply within 3–5 business days</li>
-          </ul>
-          <div style="margin-top:12px"><a class="btn" href="mailto:stnirx04@gmail.com?subject=Free%20Plan%20Request">Get started</a></div>
+<!-- Pricing Section -->
+<section class="pricing-section bg-light">
+    <div class="container text-center">
+        <h2>Choose Your Plan</h2>
+        <div class="row row-cols-1 row-cols-md-2 g-4 mt-4">
+            <div class="col"><div class="card pricing-card p-4 shadow"><h3>Free Version</h3><p class="price">₹0</p><ul class="list-unstyled"><li><i class="far fa-circle-check"></i>     Access to basic ideas</li><li><i class="far fa-circle-check"></i> Limited support</li></ul><button class="btn btn-primary mt-3">Get Started</button></div></div>
+            <div class="col"><div class="card pricing-card p-4 shadow"><h3>Premium Version</h3><p class="price">₹999</p><ul class="list-unstyled"><li><i class="far fa-circle-check"></i> Full access to all ideas</li><li><i class="far fa-circle-check"></i>Location based business ideas</li><li><i class="far fa-circle-check"></i> Detailed launch plan</li><li><i class="far fa-circle-check"></i> 1-on-1 consultation</li></ul><button class="btn btn-success mt-3">Upgrade Now</button></div></div>
         </div>
-        <div class="plan">
-          <h4>Premium plan — ₹999</h4>
-          <small>Full roadmap + priority support.</small>
-          <ul style="margin-top:12px;color:var(--muted)">
-            <li>Custom idea shortlist based on your budget & skills</li>
-            <li>Detailed launch and marketing plan</li>
-            <li>Direct email and chat support for 30 days</li>
-            <li>Faster response & phone consultation</li>
-          </ul>
-          <div style="margin-top:12px"><a class="btn" href="mailto:stnirx04@gmail.com?subject=Premium%20Plan%20Request">Upgrade for ₹999</a></div>
+    </div>
+</section>
+
+<!-- Counter / Services Section -->
+<section class="counter-section py-5">
+    <div class="container text-center">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <div class="col"><div class="p-3 shadow rounded"><h2>Our Services</h2><p>Helping you succeed in business with tailored strategies.</p></div></div>
+            <div class="col"><div class="p-3 shadow rounded"><h2>Our Approach</h2><p>Systematic methods to validate and implement ideas.</p></div></div>
+            <div class="col"><div class="p-3 shadow rounded"><h2>Why Choose Us?</h2><p>Personalized support & resources to grow your business.</p></div></div>
+            <div class="col"><div class="p-3 shadow rounded"><h2>Get Started</h2><p>Contact us today and take your first step to success.</p></div></div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
-    <section id="how" class="section how">
-      <h2>How it works</h2>
-      <div class="grid-3">
-        <div class="step"><h3>1) Tell us your angle</h3><p class="muted">Food, services, retail, or digital — pick a lane. We’ll shortlist ideas fitting your budget and skills.</p></div>
-        <div class="step"><h3>2) Get a ranked list</h3><p class="muted">We score ideas for demand, margin, local moat, and AI-resilience.</p></div>
-        <div class="step"><h3>3) Launch with a roadmap</h3><p class="muted">Follow the 7-day starter plan: validate → pre-sell → open.</p></div>
-      </div>
-    </section>
-
-    <section id="start" class="section">
-      <div class="cta-box">
-        <div>
-          <h3>Ready to move from idea to first customer?</h3>
-          <p class="muted" style="margin:6px 0 0">Send your budget, city, and interests. We’ll reply with a shortlist and starter roadmap.</p>
+<!-- Contact Us Section -->
+<section class="contact-section py-5">
+    <div class="container">
+        <div class="text-center mb-5"><h2>Contact Us</h2><p>Have questions? Reach out to us!</p></div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 mb-4">
+                <form>
+                    <div class="mb-3"><label class="form-label">Name</label><input type="text" class="form-control" placeholder="Enter your name" required></div>
+                    <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" placeholder="Enter your email" required></div>
+                    <div class="mb-3"><label class="form-label">Message</label><textarea class="form-control" rows="5" placeholder="Write your message" required></textarea></div>
+                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                </form>
+            </div>
+            <div class="col-lg-4">
+                <div class="p-4 shadow rounded bg-light h-100">
+                    <div class="email-info-box">
+                        <h4>Email</h4>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:stnirx04@gmail.com">stnirx04@gmail.com</a></p>
+                    </div>
+                    <h4>Phone</h4><p><i class="fas fa-phone"></i> <a href="tel:+91-8083974686">+91-8083974686</a></p>
+                    <h4>Social</h4>
+                    <p>
+                        <a href="https://www.linkedin.com/in/manish-kumar-8a2360310" target="_blank"><i class="fab fa-linkedin fa-lg me-2"></i></a>
+                        <a href="https://www.instagram.com/stnirx_official?utm_source=qr&igsh=MWp0MHUyaTQxZzV4Yg==" target="_blank"><i class="fab fa-instagram fa-lg me-2"></i></a>
+                    </p>
+                </div>
+            </div>
         </div>
-        <a class="btn" href="mailto:stnirx04@gmail.com?subject=StnirX%20Shortlist%20Request">Email: stnirx04@gmail.com</a>
-      </div>
-    </section>
+    </div>
+</section>
 
-    <section id="contact" class="section">
-      <h2>Contact</h2>
-      <p class="muted">Have a concept already? Share it and we’ll run a quick risk + opportunity check.</p>
-      <p><a class="pill" href="mailto:stnirx04@gmail.com">✉️ stnirx04@gmail.com</a></p>
-    </section>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"></script>
 
-    <!-- New Form Section -->
-    <section id="submit" class="section">
-      <h2>Submit Your Details</h2>
-      <p class="muted">Fill in your details and we’ll get back to you with tailored business ideas.</p>
-      
-      <form action="mailto:stnirx04@gmail.com" method="post" enctype="text/plain">
-        <input type="text" name="Name" placeholder="Your Name" required>
-        <input type="tel" name="Mobile" placeholder="Mobile Number" required>
-        <input type="text" name="City" placeholder="City" required>
-        <textarea name="Interest" placeholder="Your Interests" rows="4" required></textarea>
-        <button type="submit" class="btn">Submit</button>
-      </form>
-    </section>
-  </main>
+<script>
+    // Dark Mode Toggle with Fullscreen for entire page
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('change', () => {
+        document.body.classList.toggle('dark-mode', toggle.checked);
+        if (toggle.checked) {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.webkitRequestFullscreen) { /* Safari */
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) { /* IE11 */
+                document.documentElement.msRequestFullscreen();
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) { /* Safari */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE11 */
+                document.msExitFullscreen();
+            }
+        }
+    });
 
-  <footer class="container footer">
-    <div>© <span id="year"></span> StnirX · Built for business seekers · Free plan for ideas only · Premium ₹999</div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    // Location-based image
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(position => {
+            const lat = position.coords.latitude;   
+            const lon = position.coords.longitude;
+            document.getElementById('locationImage').src ="loaction map.png";
+        });
+    }
+</script>
 </body>
-</html>
-
+</html> 
+    
